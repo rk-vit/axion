@@ -64,10 +64,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  max-width: 100%;  /* Ensure it doesn't exceed the parent container */
-  overflow: hidden;
 }
-
 
 .process-details-title {
   font-size: 1.5rem;
@@ -125,20 +122,13 @@
   opacity: 0.9;
 }
 
-
-@media (max-width: 768px) {
-  .process-details {
-    padding: 1rem;  /* Reduce padding for smaller screens */
-    max-width: 100%;
+@media (min-width: 768px) {
+  .steps-container {
+    flex-direction: row;
   }
 
   .process-details-grid {
-    grid-template-columns: 1fr; /* Ensure single-column layout */
-  }
-
-  .process-improvement {
-    text-align: center; /* Center align if needed */
+    grid-template-columns: 1fr 1fr;
   }
 }
-
 

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react"
 import "./ContactUs.css"
 import React from "react"
+import axios from "axios"
 
 const ContactUs = () => {
   const sectionRef = useRef(null)
@@ -12,6 +13,7 @@ const ContactUs = () => {
     phone: "",
     message: "",
   })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -20,27 +22,35 @@ const ContactUs = () => {
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const response = await axios.post("http://localhost:3000/contactUs", formState);
+    
+    if (response.status === 200) {
+      setIsSubmitted(true);
       setFormState({
         name: "",
         email: "",
         phone: "",
         message: "",
-      })
+      });
 
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
-    }, 1500)
+        setIsSubmitted(false);
+      }, 5000);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Something went wrong. Please try again later.");
+  } finally {
+    setIsSubmitting(false);
   }
+};
 
   const contactInfo = [
     {
@@ -61,8 +71,8 @@ const ContactUs = () => {
         </svg>
       ),
       title: "Email",
-      content: "info@axion.com",
-      link: "mailto:info@axion.com",
+      content: "revanthkannam05@gmail.com",
+      link: "mailto:revanthkannam05@gmail.com",
     },
     {
       icon: (
@@ -81,30 +91,9 @@ const ContactUs = () => {
         </svg>
       ),
       title: "Phone",
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
-    },
-    {
-      icon: (
-        <svg
-          className="contact-icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-      ),
-      title: "Address",
-      content: "123 Tech Lane, Innovation City, CA 94103",
-      link: "https://maps.google.com",
-    },
+      content: "+91 9884146512",
+      link: "tel:+91 9884146512",
+    }
   ]
 
   return (
@@ -136,23 +125,6 @@ const ContactUs = () => {
               ))}
             </div>
 
-            <div className="business-hours">
-              <h4 className="business-hours-title">Business Hours</h4>
-              <ul className="business-hours-list">
-                <li className="business-hours-item">
-                  <span className="business-hours-day">Monday - Friday:</span>
-                  <span className="business-hours-time">9:00 AM - 6:00 PM</span>
-                </li>
-                <li className="business-hours-item">
-                  <span className="business-hours-day">Saturday:</span>
-                  <span className="business-hours-time">10:00 AM - 4:00 PM</span>
-                </li>
-                <li className="business-hours-item">
-                  <span className="business-hours-day">Sunday:</span>
-                  <span className="business-hours-time">Closed</span>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div className="contact-form-container">
@@ -170,7 +142,6 @@ const ContactUs = () => {
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
                   required
                   className="form-input"
                 />
@@ -186,7 +157,6 @@ const ContactUs = () => {
                     type="email"
                     value={formState.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
                     required
                     className="form-input"
                   />
@@ -201,7 +171,6 @@ const ContactUs = () => {
                     type="tel"
                     value={formState.phone}
                     onChange={handleChange}
-                    placeholder="+1 (555) 123-4567"
                     className="form-input"
                   />
                 </div>
@@ -215,7 +184,6 @@ const ContactUs = () => {
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project..."
                   required
                   className="form-textarea"
                 ></textarea>

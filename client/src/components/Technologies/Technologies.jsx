@@ -11,37 +11,37 @@ const Technologies = () => {
     {
       category: "Frontend",
       techs: [
-        { name: "React", icon: "/placeholder.svg" },
-        { name: "Angular", icon: "/placeholder.svg" },
-        { name: "Vue.js", icon: "/placeholder.svg" },
-        { name: "Next.js", icon: "/placeholder.svg" },
+        { name: "React", icon: "/React-icon.svg" },
+        { name: "Angular", icon: "/Angular.svg" },
+        { name: "Vue.js", icon: "/Vue.svg" },
+        { name: "Next.js", icon: "/Nextjs-logo.svg" },
       ],
     },
     {
       category: "Backend",
       techs: [
-        { name: "Node.js", icon: "/placeholder.svg" },
-        { name: "Python", icon: "/placeholder.svg" },
-        { name: "Java", icon: "/placeholder.svg" },
-        { name: ".NET", icon: "/placeholder.svg" },
+        { name: "Node.js", icon: "/Node.js.svg" },
+        { name: "Python", icon: "/Python.svg" },
+        { name: "Java", icon: "/java-ar21.svg" },
+        { name: ".NET", icon: "/DotNet_logo.svg" },
       ],
     },
     {
       category: "Database",
       techs: [
-        { name: "MongoDB", icon: "/placeholder.svg" },
-        { name: "PostgreSQL", icon: "/placeholder.svg" },
-        { name: "MySQL", icon: "/placeholder.svg" },
-        { name: "Firebase", icon: "/placeholder.svg" },
+        { name: "MongoDB", icon: "/MongoDB.svg" },
+        { name: "PostgreSQL", icon: "/Postgresq.svg" },
+        { name: "MySQL", icon: "/MySQL.svg" },
+        { name: "Firebase", icon: "/Firebase.svg" },
       ],
     },
     {
       category: "DevOps",
       techs: [
-        { name: "Docker", icon: "/placeholder.svg" },
-        { name: "Kubernetes", icon: "/placeholder.svg" },
-        { name: "AWS", icon: "/placeholder.svg" },
-        { name: "Azure", icon: "/placeholder.svg" },
+        { name: "Docker", icon: "Dockersvg.svg" },
+        { name: "Kubernetes", icon: "/Kubernetes.svg" },
+        { name: "Google Cloud", icon: "/Google_Cloud.svg" },
+        { name: "Vercel", icon: "/vercel.svg" },
       ],
     },
   ]
