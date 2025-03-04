@@ -28,7 +28,7 @@ const handleSubmit = async (e) => {
   setIsSubmitting(true);
 
   try {
-    const response = await axios.post("http://localhost:3000/contactUs", formState);
+    const response = await axios.post("https://axion-server.vercel.app/contactUs", formState);
     
     if (response.status === 200) {
       setIsSubmitted(true);
